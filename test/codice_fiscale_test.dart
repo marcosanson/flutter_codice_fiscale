@@ -1,6 +1,6 @@
-import 'package:codice_fiscale/dao/city_dao.dart';
+import 'package:flutter_codice_fiscale/dao/city_dao.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:codice_fiscale/codice_fiscale.dart';
+import 'package:flutter_codice_fiscale/codice_fiscale.dart';
 
 void main() {
   test('test last name', () {

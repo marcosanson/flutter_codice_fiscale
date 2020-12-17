@@ -1,7 +1,6 @@
-name: codice_fiscale
+name: flutter_codice_fiscale
 description: This library is useful to italian developers in order to calulate "Codice fiscale" without api
 version: 0.0.1
-author: Marco Sanson <marco.sanson@gmail.com>
 homepage: https://github.com/marcosanson
 
 environment:

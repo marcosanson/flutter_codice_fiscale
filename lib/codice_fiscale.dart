@@ -1,7 +1,7 @@
 library codice_fiscale;
 
-import 'package:codice_fiscale/utils/constants.dart';
-import 'package:codice_fiscale/utils/helpers.dart';
+import 'package:flutter_codice_fiscale/utils/constants.dart';
+import 'package:flutter_codice_fiscale/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
 import 'models/city.dart';

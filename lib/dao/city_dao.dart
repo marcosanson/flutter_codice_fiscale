@@ -1,4 +1,4 @@
-import 'package:codice_fiscale/models/city.dart';
+import 'package:flutter_codice_fiscale/models/city.dart';
 
 class CityDao {
   List<City> cities;

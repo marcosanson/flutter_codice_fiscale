@@ -101,6 +101,7 @@ class CodiceFiscale {
   }
 
   static String _getCheckCode(String partialFiscalCode) {
+    partialFiscalCode = partialFiscalCode.toUpperCase();
     int val = 0;
     for (int i = 0; i < 15; i = i + 1) {
       final String c = partialFiscalCode[i];

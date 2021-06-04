@@ -46,6 +46,24 @@ class CodiceFiscale {
     _fiscalCode = '${lastNameCode()}${firstNameCode()}${birthDateCode()}${birthPlaceCode()}${getCheckCode()}';
   }
 
+  static bool check(String codiceFiscale) {
+    if (codiceFiscale == null) {
+      return false;
+    }
+
+    String cf = codiceFiscale.toUpperCase();
+    if (cf.length != 16) {
+      return false;
+    }
+    if (!RegExp(r'^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$')
+        .hasMatch(cf)) {
+      return false;
+    }
+    final expectedCheckCode = codiceFiscale[15];
+    cf = codiceFiscale.substring(0, 15);
+    return _getCheckCode(cf).toUpperCase() == expectedCheckCode.toUpperCase();
+  }
+
   String get fiscalCode => _fiscalCode;
 
   // Useful methods
@@ -82,8 +100,7 @@ class CodiceFiscale {
     return birthCity.code;
   }
 
-  String getCheckCode() {
-    String partialFiscalCode = '${lastNameCode()}${firstNameCode()}${birthDateCode()}${birthPlaceCode()}';
+  static String _getCheckCode(String partialFiscalCode) {
     int val = 0;
     for (int i = 0; i < 15; i = i + 1) {
       final String c = partialFiscalCode[i];
@@ -91,5 +108,10 @@ class CodiceFiscale {
     }
     val = val % 26;
     return CHECK_CODE_CHARS[val];
+  }
+
+  String getCheckCode() {
+    String partialFiscalCode = '${lastNameCode()}${firstNameCode()}${birthDateCode()}${birthPlaceCode()}';
+    return _getCheckCode(partialFiscalCode);
   }
 }

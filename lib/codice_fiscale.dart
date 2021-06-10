@@ -2,7 +2,6 @@ library codice_fiscale;
 
 import 'package:flutter_codice_fiscale/utils/constants.dart';
 import 'package:flutter_codice_fiscale/utils/helpers.dart';
-import 'package:flutter/material.dart';
 
 import 'models/city.dart';
 import 'dao/city_dao.dart';
@@ -11,46 +10,37 @@ enum CodiceFiscaleGender { M, F }
 
 class CodiceFiscale {
   String firstName, lastName;
-  City birthCity;
+  City? birthCity;
   CodiceFiscaleGender gender;
   DateTime birthDate;
-  String birthCityString;
-  String _fiscalCode;
+  String? birthCityString;
+  late String _fiscalCode;
 
   CodiceFiscale(
-      {@required this.firstName,
-      @required this.lastName,
-      @required this.birthCity,
-      @required this.gender,
-      @required this.birthDate})
-      : assert(firstName != null && firstName.isNotEmpty),
-        assert(lastName != null && lastName.isNotEmpty),
-        assert(birthCity != null),
-        assert(gender != null),
-        assert(birthDate != null) {
+      {required this.firstName,
+      required this.lastName,
+      required this.birthCity,
+      required this.gender,
+      required this.birthDate})
+      : assert(firstName.isNotEmpty),
+        assert(lastName.isNotEmpty) {
     _fiscalCode = '${lastNameCode()}${firstNameCode()}${birthDateCode()}${birthPlaceCode()}${getCheckCode()}';
   }
 
   CodiceFiscale.searchcity(
-      {@required this.firstName,
-      @required this.lastName,
-      @required this.birthCityString,
-      @required this.gender,
-      @required this.birthDate})
-      : assert(firstName != null && firstName.isNotEmpty),
-        assert(lastName != null && lastName.isNotEmpty),
-        assert(birthCityString != null && birthCityString.isNotEmpty),
-        assert(gender != null),
-        assert(birthDate != null) {
+      {required this.firstName,
+      required this.lastName,
+      required this.birthCityString,
+      required this.gender,
+      required this.birthDate})
+      : assert(firstName.isNotEmpty),
+        assert(lastName.isNotEmpty),
+        assert(birthCityString != null && birthCityString.isNotEmpty) {
     this.birthCity = CityDao().getCityByName(birthCityString);
     _fiscalCode = '${lastNameCode()}${firstNameCode()}${birthDateCode()}${birthPlaceCode()}${getCheckCode()}';
   }
 
   static bool check(String codiceFiscale) {
-    if (codiceFiscale == null) {
-      return false;
-    }
-
     String cf = codiceFiscale.toUpperCase();
     if (cf.length != 16) {
       return false;
@@ -97,7 +87,7 @@ class CodiceFiscale {
   }
 
   String birthPlaceCode() {
-    return birthCity.code;
+    return birthCity!.code;
   }
 
   static String _getCheckCode(String partialFiscalCode) {
@@ -105,7 +95,7 @@ class CodiceFiscale {
     int val = 0;
     for (int i = 0; i < 15; i = i + 1) {
       final String c = partialFiscalCode[i];
-      val += (i % 2 != 0 ? CHECK_CODE_EVEN[c.toString()] : CHECK_CODE_ODD[c.toString()]);
+      val += (i % 2 != 0 ? CHECK_CODE_EVEN[c.toString()]! : CHECK_CODE_ODD[c.toString()]!);
     }
     val = val % 26;
     return CHECK_CODE_CHARS[val];

@@ -1,9 +1,10 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter_codice_fiscale/models/city.dart';
 
 class CityDao {
-  List<City> cities;
+  late List<City> cities;
   CityDao() {
-    cities = new List();
+    cities = [];
     cities.add(City("Agliè", "Torino", "Piemonte", "A074"));
     cities.add(City("Airasca", "Torino", "Piemonte", "A109"));
     cities.add(City("Ala di Stura", "Torino", "Piemonte", "A117"));
@@ -7909,19 +7910,17 @@ class CityDao {
     cities.add(City("Villaspeciosa", "Sud Sardegna", "Sardegna", "M026"));
   }
 
-  City getCityByName(String name) {
+  City? getCityByName(String? name) {
     try {
-      return cities.firstWhere((element) => element.name.toLowerCase() == name.trim().toLowerCase(),
-          orElse: () => null);
+      return cities.firstWhereOrNull((element) => element.name.toLowerCase() == name!.trim().toLowerCase());
     } on Exception {
       return null;
     }
   }
 
-  City getCityByCode(String code) {
+  City? getCityByCode(String code) {
     try {
-      return cities.firstWhere((element) => element.code.toLowerCase() == code.trim().toLowerCase(),
-          orElse: () => null);
+      return cities.firstWhereOrNull((element) => element.code.toLowerCase() == code.trim().toLowerCase());
     } on Exception {
       return null;
     }

@@ -7,7 +7,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.lastNameCode(), 'SNS');
@@ -17,7 +17,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.firstNameCode(), 'MCL');
@@ -27,7 +27,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.birthDateCode(), '81R28');
@@ -37,7 +37,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.F,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.birthDateCode(), '81R68');
@@ -47,7 +47,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.F,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.birthPlaceCode(), 'L840');
@@ -57,7 +57,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Padova'),
+        birthCity: CityDao().getCityByName('Padova')!,
         gender: CodiceFiscaleGender.F,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.birthPlaceCode(), 'G224');
@@ -67,7 +67,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.getCheckCode(), 'T');
@@ -77,7 +77,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Padova'),
+        birthCity: CityDao().getCityByName('Padova')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.getCheckCode(), 'G');
@@ -87,7 +87,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Vicenza'),
+        birthCity: CityDao().getCityByName('Vicenza')!,
         gender: CodiceFiscaleGender.M,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.fiscalCode, 'SNSMCL81R28L840T');
@@ -97,7 +97,7 @@ void main() {
     final fiscalCode = CodiceFiscale(
         firstName: 'marco eliseo',
         lastName: 'sanson',
-        birthCity: CityDao().getCityByName('Padova'),
+        birthCity: CityDao().getCityByName('Padova')!,
         gender: CodiceFiscaleGender.F,
         birthDate: DateTime(1981, 10, 28));
     expect(fiscalCode.fiscalCode, 'SNSMCL81R68G224K');

@@ -1,8 +1,8 @@
 class City {
-  String name;
-  String code;
-  String province;
-  String regione;
+  late String name;
+  late String code;
+  late String province;
+  late String regione;
 
   City(String name, String province, String regione, String code) {
     this.name = name;

@@ -59,7 +59,7 @@ class CodiceFiscale {
   // Useful methods
 
   String lastNameCode() {
-    final String code = extractConsonants(this.lastName);
+    final String code = '${extractConsonants(this.lastName)}${extractVowels(this.lastName)}XXX';
     return code.substring(0, 3).toUpperCase();
   }
 
